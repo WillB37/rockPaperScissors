@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 // It will return, at random, "rock" "paper" "scissors"
 
 function getComputerChoice() {
