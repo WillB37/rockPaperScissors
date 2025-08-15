@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 // It will return, at random, "rock" "paper" "scissors"
 
 function getComputerChoice() {
@@ -22,35 +19,43 @@ function getHumanChoice() {
   return prompt("Enter Rock, Paper, or Scissors");
 }
 
-// Write function call playRound
-// Plays a single round
-// Stores choices in "humanChoice" and "computerChoice"
-// "humanChoice" is case-insensitive
-// outputs to console.log
-// increments scores
+// Plays 5 rounds
 
-function playRound() {
-  let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice().toLowerCase();
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
 
-  if (computerChoice === humanChoice) {
-    console.log(`Tie! ${computerChoice} equals ${humanChoice}.`);
-  } else if (
-    (computerChoice === "rock" && humanChoice === "scissors") ||
-    (computerChoice === "paper" && humanChoice === "rock") ||
-    (computerChoice === "scissors" && humanChoice === "paper")
-  ) {
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-    computerScore++;
-  } else {
-    console.log(`You Win! ${humanChoice} beats ${computerChoice}.`);
-    humanScore++;
+  // Plays a single round
+  // Stores choices in "humanChoice" and "computerChoice"
+  // "humanChoice" is case-insensitive
+  // outputs to console.log
+  // increments scores
+
+  let playRound = () => {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice().toLowerCase();
+
+    if (computerChoice === humanChoice) {
+      console.log(`Tie! ${computerChoice} equals ${humanChoice}.`);
+    } else if (
+      (computerChoice === "rock" && humanChoice === "scissors") ||
+      (computerChoice === "paper" && humanChoice === "rock") ||
+      (computerChoice === "scissors" && humanChoice === "paper")
+    ) {
+      console.log(`You Lose! ${computerChoice} beats ${humanChoice}.`);
+      computerScore++;
+    } else {
+      console.log(`You Win! ${humanChoice} beats ${computerChoice}.`);
+      humanScore++;
+    }
+  };
+
+  for (let round = 1; round <= 5; round++) {
+    console.log(`Round ${round}!`);
+    playRound();
+    console.log(`Computer Score: ${computerScore}`);
+    console.log(`Your Score: ${humanScore}`);
   }
 }
 
-playRound();
-console.log(`Computer Score: ${computerScore}`);
-console.log(`Human Score: ${humanScore}`);
-
-// Write playGame function
-// Plays 5 rounds
+playGame();
